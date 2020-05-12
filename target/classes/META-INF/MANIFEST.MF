@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
 Built-By: Marcin
 Build-Jdk: 12.0.1
+Implementation-Title: DataManager
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: gilko.marcin
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/DataManager
 Created-By: Maven Integration for Eclipse
 

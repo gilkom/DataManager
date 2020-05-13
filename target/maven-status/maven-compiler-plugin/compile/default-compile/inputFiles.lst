@@ -1,1 +1,5 @@
-D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\AppMain.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\controller\AppController.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\model\Product.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\service\ProductService.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\AppMain.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\repository\ProductRepository.java

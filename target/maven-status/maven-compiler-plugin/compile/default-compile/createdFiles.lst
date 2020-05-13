@@ -1,1 +1,5 @@
-gilko\marcin\AppMain.class
+gilko\marcin\datamanager\controller\AppController.class
+gilko\marcin\datamanager\AppMain.class
+gilko\marcin\datamanager\model\Product.class
+gilko\marcin\datamanager\service\ProductService.class
+gilko\marcin\datamanager\repository\ProductRepository.class

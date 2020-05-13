@@ -18,6 +18,7 @@ public class AppController {
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
 		List<Product> listProducts = service.listAll();
+		model.addAttribute("listProducts", listProducts);
 		return "index";
 	}
 }

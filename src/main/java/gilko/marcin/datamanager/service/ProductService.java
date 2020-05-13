@@ -15,19 +15,19 @@ public class ProductService {
 	@Autowired
 	private ProductRepository repo;
 	
-	private List<Product> listAll(){
+	public List<Product> listAll(){
 		return repo.findAll();
 	}
 	
-	private void save(Product product) {
+	public void save(Product product) {
 		repo.save(product);
 	}
 	
-	private Product get(long id) {
+	public Product get(long id) {
 		return repo.findById(id).get();
 	}
 	
-	private void delete(long id) {
+	public void delete(long id) {
 		repo.deleteById(id);
 	}
 }

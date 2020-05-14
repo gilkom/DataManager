@@ -20,7 +20,7 @@ public class AppController {
 	private ProductService service;
 	
 	@RequestMapping("/product_list")
-	public String viewHomePage(Model model) {
+	public String viewProductPage(Model model) {
 		List<Product> listProducts = service.listAll();
 		model.addAttribute("listProducts", listProducts);
 		return "product_list";

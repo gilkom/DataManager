@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<head>
+<meta charset="utf-8"/>
+<title>Product Manager</title>
+</head>
+<body>
+<section>
+	<div class = "jumbotron">
+	<div class = "container">
+		<h1>Product List</h1>
+		<nav aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="/">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="/">Product List</li>
+		  </ol>
+		</nav>
+	</div>
+	</div>
+</section>
+<section>
+	<div class ="container" align="center">
+			<a href="/new">Create New Product</a>
+		<br/><br/>
+		<table class = "table" border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Product Id</th>
+					<th>Name</th>
+					<th>Brand</th>
+					<th>MadeIn</th>
+					<th>Price</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="product : ${listProducts}">
+				
+					<td th:text="${product.id}">Product Id</td>
+					<td th:text="${product.name}">Name</td>
+					<td th:text="${product.brand}">Brand</td>
+					<td th:text="${product.madein}">Made In</td>
+					<td th:text="${product.price}">Price</td>
+					<td>
+						<a th:href="@{'edit/' + ${product.id}}">Edit</a>
+						&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'delete/' + ${product.id}}">Delete</a>
+					</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+</body>
+</html>

@@ -19,11 +19,11 @@ public class AppController {
 	@Autowired
 	private ProductService service;
 	
-	@RequestMapping("/")
+	@RequestMapping("/product_list")
 	public String viewHomePage(Model model) {
 		List<Product> listProducts = service.listAll();
 		model.addAttribute("listProducts", listProducts);
-		return "index";
+		return "product_list";
 	}
 	@RequestMapping("/new")
 	public String showNewProductPage(Model model) {

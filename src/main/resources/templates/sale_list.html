@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <head>
 <meta charset="utf-8"/>
 <title>Sale List</title>
 </head>
 <body>
-<div align="center">
-	<h1>Sales Records</h1>
-	<a href="/new">Enter New Sale</a>
-	<br/><br/>
-	<table border="1" cellpadding="10">
+<section>
+	<div class = "jumbotron">
+	<div class = "container">
+		<h1>Sale List</h1>
+		<nav aria-label="breadcrumb">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><a href="/">Home</a></li>
+		    <li class="breadcrumb-item active" aria-current="/sale_list">Sale List</li>
+		  </ol>
+		</nav>
+	</div>
+	</div>
+</section>
+<section>
+	<div class ="container" align="center">
+			<a href="/sale_list/new">Create New Sale</a>
+		<br/><br/>
+	<table class = "table" border="1" cellpadding="10">
 		<thead>
             <tr>
                 <th>ID</th>

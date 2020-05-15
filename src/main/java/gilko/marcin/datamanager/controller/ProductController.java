@@ -15,11 +15,12 @@ import gilko.marcin.datamanager.model.Product;
 import gilko.marcin.datamanager.service.ProductService;
 
 @Controller
-public class AppController {
+@RequestMapping("/product_list")
+public class ProductController {
 	@Autowired
 	private ProductService service;
 	
-	@RequestMapping("/product_list")
+	@RequestMapping
 	public String viewProductPage(Model model) {
 		List<Product> listProducts = service.listAll();
 		model.addAttribute("listProducts", listProducts);
@@ -34,7 +35,7 @@ public class AppController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveProduct(@ModelAttribute("product") Product product) {
 		service.save(product);	
-		return "redirect:/";
+		return "redirect:/product_list";
 	}
 	@RequestMapping("/edit/{id}")
 	public ModelAndView  showEditProductPage(@PathVariable(name = "id") int id) {
@@ -46,6 +47,6 @@ public class AppController {
 	@RequestMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable(name = "id") int id) {
 		service.delete(id);
-		return "redirect:/";
+		return "redirect:/product_list";
 	}
 }

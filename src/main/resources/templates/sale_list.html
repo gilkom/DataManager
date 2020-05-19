@@ -41,9 +41,9 @@
                 <td th:text="${sale.quantity}">Quantity</td>
                 <td th:text="${sale.amount}">Amount</td>
                 <td>
-                    <a th:href="@{'/edit/' + ${sale.id}}">Edit</a>
+                    <a th:href="@{'sale_list/edit_sale/' + ${sale.id}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${sale.id}}">Delete</a>
+                    <a th:href="@{'sale_list/delete_sale/' + ${sale.id}}">Delete</a>
                 </td>
             </tr>
         </tbody>

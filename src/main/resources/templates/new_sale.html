@@ -1,11 +1,49 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>New Sale</title>
 </head>
 <body>
+<section>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Create New Sale</h1>
+			<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="/">Home</a></li>
+			<li class="breadcrum-item"><a href="/sale_list">Sale list</a></li>		
+			<li class="breadcrum-item active" aria-current="/sale_list/new_sale">New Sale</li>
+			</ol>
+			</nav>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="container" align="center">
+		<form action="#" th:action="@{/sale_list/save_sale}" th:object="${sale}" method="post">
+			<table class="table">
+				<tr>
+					<td>Item Name:</td>
+					<td><input type="text" th:field="*{item}"/> </td>
+				</tr>
+				<tr>
+					<td>Quantity:</td>
+					<td><input type="text" th:field="*{quantity}"/></td>
+				</tr>
+				<tr>
+					<td>Amount:</td>
+					<td><input type="text" th:field="*{amount}" /></td>
+				</tr>
 
+				<tr>
+					<td colspan="2"><button type="submit">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</section>
 </body>
 </html>

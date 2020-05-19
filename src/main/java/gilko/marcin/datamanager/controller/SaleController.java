@@ -22,7 +22,7 @@ public class SaleController {
 		model.addAttribute("listSale", listSale);
 		return "sale_list";
 	}
-	@RequestMapping("/new")
+	@RequestMapping("/new_sale")
 	public String showNewForm(Model model) {
 		Sale sale = new Sale();
 		model.addAttribute("sale", sale);

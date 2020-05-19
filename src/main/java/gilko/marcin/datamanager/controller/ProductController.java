@@ -26,7 +26,7 @@ public class ProductController {
 		model.addAttribute("listProducts", listProducts);
 		return "product_list";
 	}
-	@RequestMapping("/new")
+	@RequestMapping("/new_product")
 	public String showNewProductPage(Model model) {
 		Product product = new Product();
 		model.addAttribute("product", product);

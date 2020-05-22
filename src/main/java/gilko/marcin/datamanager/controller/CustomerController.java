@@ -16,7 +16,7 @@ public class CustomerController {
 @Autowired
 private CustomerService service;
 
-
+@RequestMapping
 public String viewCustomerPage(Model model) {
 	List<Customer> listCustomers = service.listAll();
 	model.addAttribute("listCustomers", listCustomers);

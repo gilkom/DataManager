@@ -1,5 +1,13 @@
-D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\controller\AppController.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\controller\ProductController.java
 D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\model\Product.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\repository\SaleRepository.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\repository\CustomerRepository.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\controller\CustomerController.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\model\Customer.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\service\SaleService.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\controller\SaleController.java
 D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\service\ProductService.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\model\Sale.java
+D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\service\CustomerService.java
 D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\AppMain.java
 D:\jee-2019-06\DataManager\src\main\java\gilko\marcin\datamanager\repository\ProductRepository.java

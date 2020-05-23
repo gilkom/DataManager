@@ -4,18 +4,18 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <head>
 <meta charset="utf-8"/>
-<title>New Sale</title>
+<title>New Customer</title>
 </head>
 <body>
 <section>
 	<div class = "jumbotron">
 	<div class = "container">
-			<h1>Create New Sale</h1>
+			<h1>Create New Customer</h1>
 			<nav aria-label="breadcrumb">
 		  <ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/">Home</a></li>
-			<li class="breadcrumb-item"><a href="/sale_list">Sale list</a></li>		
-			<li class="breadcrumb-item active" aria-current="/sale_list/new_sale">New Sale</li>
+			<li class="breadcrumb-item"><a href="/customer_list">Customer list</a></li>		
+			<li class="breadcrumb-item active" aria-current="/customer_list/new_customer">New Customer</li>
 			</ol>
 			</nav>
 		</div>
@@ -23,23 +23,23 @@
 </section>
 <section>
 	<div class="container" align="center">
-		<form action="#" th:action="@{/sale_list/save_sale}" th:object="${sale}" method="post">
+		<form action="#" th:action="@{/customer_list/save_customer}" th:object="${customer}" method="post">
 			<table class="table">
 				<tr>
-					<td>Item Name:</td>
-					<td><input type="text" th:field="*{item}"/> </td>
+					<td>Customer Name:</td>
+					<td><input type="text" th:field="*{name}"/> </td>
 				</tr>
 				<tr>
-					<td>Quantity:</td>
-					<td><input type="text" th:field="*{quantity}"/></td>
+					<td>Email:</td>
+					<td><input type="text" th:field="*{email}"/></td>
 				</tr>
 				<tr>
-					<td>Amount:</td>
-					<td><input type="text" th:field="*{amount}" /></td>
+					<td>Address:</td>
+					<td><input type="text" th:field="*{address}" /></td>
 				</tr>
 
 				<tr>
-					<td colspan="2"><button class = "btn btn-primary"  type="submit">Save</button></td>
+					<td colspan="2"><button class = "btn btn-primary" type="submit">Save</button></td>
 				</tr>
 			</table>
 		</form>

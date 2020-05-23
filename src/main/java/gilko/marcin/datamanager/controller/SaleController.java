@@ -33,19 +33,19 @@ public class SaleController {
 		return "new_sale";
 	}
 	@RequestMapping(value = "/save_sale",method = RequestMethod.POST)
-	public String saveSale(@ModelAttribute("product") Sale sale) {
+	public String saveSale(@ModelAttribute("sale") Sale sale) {
 		service.save(sale);
 		return "redirect:/sale_list";
 	}
 	@RequestMapping("/edit_sale/{id}")
-	public ModelAndView showEditSalePage(@PathVariable(name="id") int id) {
+	public ModelAndView showEditSalePage(@PathVariable(name="id") long id) {
 		ModelAndView mav = new ModelAndView("edit_sale");
 		Sale sale = service.get(id);
 		mav.addObject("sale", sale);
 		return mav;
 	}
 	@RequestMapping("/delete_sale/{id}")
-	public String deleteSale(@PathVariable(name = "id") int id) {
+	public String deleteSale(@PathVariable(name = "id") long id) {
 		service.delete(id);
 		return "redirect:/sale_list";
 	}

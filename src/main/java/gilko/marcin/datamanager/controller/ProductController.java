@@ -38,14 +38,14 @@ public class ProductController {
 		return "redirect:/product_list";
 	}
 	@RequestMapping("/edit/{id}")
-	public ModelAndView  showEditProductPage(@PathVariable(name = "id") int id) {
+	public ModelAndView  showEditProductPage(@PathVariable(name = "id") long id) {
 		ModelAndView mav = new ModelAndView("edit_product");
 		Product product = service.get(id);
 		mav.addObject("product", product);
 		return mav;
 	}
 	@RequestMapping("/delete/{id}")
-	public String deleteProduct(@PathVariable(name = "id") int id) {
+	public String deleteProduct(@PathVariable(name = "id") long id) {
 		service.delete(id);
 		return "redirect:/product_list";
 	}

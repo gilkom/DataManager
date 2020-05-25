@@ -28,18 +28,22 @@
 				<tr>
 					<td>Product Name:</td>
 					<td><input type="text" th:field="*{name}"/> </td>
+					<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">NameError</td>
 				</tr>
 				<tr>
 					<td>Brand:</td>
 					<td><input type="text" th:field="*{brand}"/></td>
+					<td th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}">NameError</td>
 				</tr>
 				<tr>
 					<td>Made in:</td>
 					<td><input type="text" th:field="*{madein}" /></td>
+					<td th:if="${#fields.hasErrors('madein')}" th:errors="*{madein}">NameError</td>
 				</tr>
 				<tr>
 					<td>Price</td>
 					<td><input type="text" th:field="*{price}"/></td>
+					<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">NameError</td>
 				</tr>
 				<tr>
 					<td colspan="2"><button class = "btn btn-primary" type="submit">Save</button></td>

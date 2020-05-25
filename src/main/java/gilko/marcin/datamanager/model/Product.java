@@ -4,13 +4,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Product {
 	private Long id;
+	@NotBlank(message="Name is mandatory")
+	@Size(min=2, max=30)
 	private String name;
+	@NotBlank(message="Brand is mandatory")
 	private String brand;
+	@NotBlank(message="Made in is mandatory")
 	private String madein;
+	@DecimalMin("0.01")
+	@Digits(integer=6, fraction=2)
 	private float price;
 	
 	public Product() {

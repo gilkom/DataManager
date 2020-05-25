@@ -43,7 +43,10 @@
                 <td>
                     <a th:href="@{'sale_list/edit_sale/' + ${sale.id}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
+                     <form method="get" action="@{'sale_list/delete_sale/' + ${sale.id}}"
+       					  onclick="return confirm('Are you sure you want to delete this sale?') ? true : false;">
                     <a th:href="@{'sale_list/delete_sale/' + ${sale.id}}">Delete</a>
+                    </form>
                 </td>
             </tr>
         </tbody>

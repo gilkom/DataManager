@@ -28,14 +28,17 @@
 				<tr>
 					<td>Item Name:</td>
 					<td><input type="text" th:field="*{item}"/> </td>
+					<td th:if="${#fields.hasErrors('item')}" th:errors="*{item}">NameError</td>
 				</tr>
 				<tr>
 					<td>Quantity:</td>
 					<td><input type="text" th:field="*{quantity}"/></td>
+					<td th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">NameError</td>
 				</tr>
 				<tr>
 					<td>Amount:</td>
 					<td><input type="text" th:field="*{amount}" /></td>
+					<td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">NameError</td>
 				</tr>
 
 				<tr>

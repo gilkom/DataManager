@@ -2,9 +2,12 @@ package gilko.marcin.datamanager.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +37,10 @@ public String showNewCustomer(Model model) {
 	return "new_customer";
 }
 @RequestMapping(value= "/save_customer", method = RequestMethod.POST)
-public String saveCustomer(@ModelAttribute("customer") Customer customer) {
+public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult bindingResult) {
+	if(bindingResult.hasErrors()) {
+		return "new_customer";
+	}
 	service.save(customer);
 	return "redirect:/customer_list";
 }

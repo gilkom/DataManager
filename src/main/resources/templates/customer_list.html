@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
 <head>
@@ -18,12 +19,17 @@
 		    <li class="breadcrumb-item active" aria-current="/customer_list">Customer List</li>
 		  </ol>
 		</nav>
+		<div align ="right">
+		<form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+			<input type="submit" value="Logout" class="btn btn-info btn-lg"/>
+		</form>
+		</div>
 	</div>
 	</div>
 </section>
 <section>
 	<div class ="container" align="center">
-			<a href=customer_list/new_customer>Add New Customer</a>
+			<a href=customer_list/new_customer sec:authorize="hasRole('ROLE_ADMIN')">Add New Customer</a>
 		<br/><br/>
 	<table class = "table">
         <thead>
@@ -32,6 +38,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Address</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +47,7 @@
                 <td th:text="${customer.name}">Name</td>
                 <td th:text="${customer.email}">Email</td>
                 <td th:text="${customer.address}">Address</td>
-                <td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
                       <a th:href="@{'customer_list/edit_customer/' + ${customer.id}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
                     <form method="get" action="@{'customer_list/delete_customer/' + ${customer.id}}"

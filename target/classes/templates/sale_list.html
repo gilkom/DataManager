@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <head>
 <meta charset="utf-8"/>
@@ -17,12 +18,17 @@
 		    <li class="breadcrumb-item active" aria-current="/sale_list">Sale List</li>
 		  </ol>
 		</nav>
+		<div align ="right">
+		<form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+			<input type="submit" value="Logout" class="btn btn-info btn-lg"/>
+		</form>
+		</div>
 	</div>
 	</div>
 </section>
 <section>
 	<div class ="container" align="center">
-			<a href="/sale_list/new_sale">Create New Sale</a>
+			<a href="/sale_list/new_sale" sec:authorize="hasRole('ROLE_ADMIN')">Create New Sale</a>
 		<br/><br/>
 	<table class = "table">
 		<thead>
@@ -31,7 +37,7 @@
                 <th>Item Name</th>
                 <th>Quantity</th>
                 <th>Amount</th>
-                <th>Actions</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +46,7 @@
                 <td th:text="${sale.item}">Item Name</td>
                 <td th:text="${sale.quantity}">Quantity</td>
                 <td th:text="${sale.amount}">Amount</td>
-                <td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')">
                     <a th:href="@{'sale_list/edit_sale/' + ${sale.id}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
                      <form method="get" action="@{'sale_list/delete_sale/' + ${sale.id}}"

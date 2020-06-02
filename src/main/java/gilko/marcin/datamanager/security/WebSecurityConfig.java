@@ -25,7 +25,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		http.authorizeRequests()
+		http
+		.authorizeRequests()
+		.antMatchers("/").permitAll()
+		.antMatchers("/product_list/new_product").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/product_list//edit/{id}").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/product_list//delete/{id}").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/customer_list/new_customer").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/customer_list//edit_customer/{id}").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/customer_list//delete_customer/{id}").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/sale_list/new_sale").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/sale_list//edit_sale/{id}").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/sale_list//delete_sale/{id}").access("hasRole('ROLE_ADMIN')")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin().permitAll()

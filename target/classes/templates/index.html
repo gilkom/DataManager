@@ -9,6 +9,20 @@
 </head>
 <body>
 <section>
+<div sec:authorize="isAuthenticated()">
+<nav class="navbar navbar-dark bg-dark">
+	 <div class="container-fluid">
+	     <ul class="nav navbar-nav">
+  		  </ul>
+		 <ul class="nav navbar-nav navbar-right">
+		<li>
+			<span  class="navbar-text"  sec:authentication="name">Username</span>
+			<span  class="navbar-text" sec:authentication="principal.authorities">Roles</span>
+		</li>
+		</ul>
+	</div>
+</nav>
+</div>
 	<div class = "jumbotron">
 	<div class = "container">
 		<h1>Simple Data Manager</h1>
@@ -16,9 +30,8 @@
 		<form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
 			<input type="submit" value="Logout" class="btn btn-info btn-lg"/>
 		</form>
-		<form th:action="@{/login}" method="post" sec:authorize="isAnonymous()">
-			<input type="submit" value="Login" class="btn btn-info btn-lg"/>
-		</form>
+	
+		<a href="/login" type="button" class="btn btn-info btn-lg" sec:authorize="isAnonymous()">Login</a>
 		</div>
 	</div>
 	</div>

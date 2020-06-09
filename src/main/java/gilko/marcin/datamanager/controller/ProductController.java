@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,14 +20,35 @@ import gilko.marcin.datamanager.model.Product;
 import gilko.marcin.datamanager.service.ProductService;
 
 @Controller
-@RequestMapping("/product_list")
 public class ProductController {
 	@Autowired
 	private ProductService service;
 	
-	@RequestMapping
+	@RequestMapping("/product_list")
 	public String viewProductPage(Model model) {
-		List<Product> listProducts = service.listAll();
+		//List<Product> listProducts = service.listAll();
+		//model.addAttribute("listProducts", listProducts);
+		//return "product_list";
+		return viewPage(model, 1, "name", "asc");
+	}
+	@RequestMapping("/page/{pageNum}")
+	public String viewPage(Model model, 
+			@PathVariable(name = "pageNum") int pageNum,
+			@Param("sortField") String sortField,
+			@Param("sortDir") String sortDir) {
+		
+		Page<Product> page = service.listAll(pageNum, sortField, sortDir);
+		
+		List<Product> listProducts = page.getContent();
+		
+		model.addAttribute("currentPage", pageNum);		
+		model.addAttribute("totalPages", page.getTotalPages());
+		model.addAttribute("totalItems", page.getTotalElements());
+		
+		model.addAttribute("sortField", sortField);
+		model.addAttribute("sortDir", sortDir);
+		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
+		
 		model.addAttribute("listProducts", listProducts);
 		return "product_list";
 	}

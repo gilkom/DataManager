@@ -52,13 +52,13 @@ public class ProductController {
 		model.addAttribute("listProducts", listProducts);
 		return "product_list";
 	}
-	@RequestMapping("/new_product")
+	@RequestMapping("/product_list/new_product")
 	public String showNewProductPage(Model model) {
 		Product product = new Product();
 		model.addAttribute("product", product);
 		return "new_product";
 	}
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/product_list/save", method = RequestMethod.POST)
 	public String saveProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return "new_product";
@@ -66,14 +66,14 @@ public class ProductController {
 		service.save(product);	
 		return "redirect:/product_list";
 	}
-	@RequestMapping("/edit/{id}")
+	@RequestMapping("/product_list/edit/{id}")
 	public ModelAndView  showEditProductPage(@PathVariable(name = "id") long id) {
 		ModelAndView mav = new ModelAndView("edit_product");
 		Product product = service.get(id);
 		mav.addObject("product", product);
 		return mav;
 	}
-	@RequestMapping("/delete/{id}")
+	@RequestMapping("/product_list/delete/{id}")
 	public String deleteProduct(@PathVariable(name = "id") long id) {
 		service.delete(id);
 		return "redirect:/product_list";

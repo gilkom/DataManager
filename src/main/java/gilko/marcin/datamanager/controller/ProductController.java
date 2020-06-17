@@ -20,11 +20,12 @@ import gilko.marcin.datamanager.model.Product;
 import gilko.marcin.datamanager.service.ProductService;
 
 @Controller
+@RequestMapping("/product_list")
 public class ProductController {
 	@Autowired
 	private ProductService service;
 	
-	@RequestMapping("/product_list")
+	@RequestMapping
 	public String viewProductPage(Model model) {
 		//List<Product> listProducts = service.listAll();
 		//model.addAttribute("listProducts", listProducts);
@@ -52,13 +53,13 @@ public class ProductController {
 		model.addAttribute("listProducts", listProducts);
 		return "product_list";
 	}
-	@RequestMapping("/product_list/new_product")
+	@RequestMapping("/new_product")
 	public String showNewProductPage(Model model) {
 		Product product = new Product();
 		model.addAttribute("product", product);
 		return "new_product";
 	}
-	@RequestMapping(value = "/product_list/save", method = RequestMethod.POST)
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return "new_product";
@@ -66,14 +67,15 @@ public class ProductController {
 		service.save(product);	
 		return "redirect:/product_list";
 	}
-	@RequestMapping("/product_list/edit/{id}")
+	@RequestMapping("/edit/{id}")
 	public ModelAndView  showEditProductPage(@PathVariable(name = "id") long id) {
 		ModelAndView mav = new ModelAndView("edit_product");
 		Product product = service.get(id);
 		mav.addObject("product", product);
 		return mav;
 	}
-	@RequestMapping("/product_list/delete/{id}")
+	
+	@RequestMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable(name = "id") long id) {
 		service.delete(id);
 		return "redirect:/product_list";

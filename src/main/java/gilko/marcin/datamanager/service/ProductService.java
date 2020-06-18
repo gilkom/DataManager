@@ -19,14 +19,15 @@ public class ProductService {
 	@Autowired
 	private ProductRepository repo;
 	
-public Page<Product> listAll(int pageNum, String sortField, String sortDir) {
+public Page<Product> listAll(int pageNum, String sortField, String sortDir, String keyword) {
 		
 		Pageable pageable = PageRequest.of(pageNum - 1, 5, 
 				sortDir.equals("asc") ? Sort.by(sortField).ascending()
 									  : Sort.by(sortField).descending()
 		);
 		
-		return repo.findAll(pageable);
+		//return repo.findAll(pageable);
+		return repo.search(keyword, pageable);
 	}
 	
 	public void save(Product product) {

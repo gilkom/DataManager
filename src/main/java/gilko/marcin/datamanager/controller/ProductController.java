@@ -30,18 +30,20 @@ public class ProductController {
 		//List<Product> listProducts = service.listAll();
 		//model.addAttribute("listProducts", listProducts);
 		//return "product_list";
-		return viewPage(model, 1, "name", "asc");
+		return viewPage(model, 1, "name", "asc", "");
 	}
 	@RequestMapping("/page/{pageNum}")
 	public String viewPage(Model model, 
 			@PathVariable(name = "pageNum") int pageNum,
 			@Param("sortField") String sortField,
-			@Param("sortDir") String sortDir) {
+			@Param("sortDir") String sortDir,
+			@Param("keyword") String keyword) {
 		
-		Page<Product> page = service.listAll(pageNum, sortField, sortDir);
+		Page<Product> page = service.listAll(pageNum, sortField, sortDir, keyword);
 		
 		List<Product> listProducts = page.getContent();
 		
+		model.addAttribute("keyword", keyword);
 		model.addAttribute("currentPage", pageNum);		
 		model.addAttribute("totalPages", page.getTotalPages());
 		model.addAttribute("totalItems", page.getTotalElements());
@@ -74,7 +76,6 @@ public class ProductController {
 		mav.addObject("product", product);
 		return mav;
 	}
-	
 	@RequestMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable(name = "id") long id) {
 		service.delete(id);

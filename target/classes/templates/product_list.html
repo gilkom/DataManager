@@ -30,11 +30,20 @@
 	<div class ="container" align="center">
 			<a class="btn btn-primary btn_lg" href="/product_list/new_product" sec:authorize="hasRole('ADMIN')">Create New Product</a>
 		<br/><br/>
+	
+		<form th:action="@{'/product_list/page/1'}">
+		    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+		    &nbsp;
+		    <input type="submit" value="Search" />
+		    &nbsp;
+		    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+		</form>
+		
 		<table class = "table">
 			<thead>
 				<tr>
 									<th>
-					<a th:href="@{'/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir}}">Product ID</a>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir} +'?keyword=' + ${keyword}}">Product ID</a>
 				</th>
 				<th>
 					<a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Name</a>
@@ -60,11 +69,11 @@
 					<td th:text="${product.madein}">Made In</td>
 					<td th:text="${product.price}">Price</td>
 					<td sec:authorize="hasRole('ADMIN')">
-						<a class="btn btn-warning btn-sm" th:href="@{'product_list/edit/' + ${product.id}}">Edit</a>
+						<a class="btn btn-warning btn-sm" th:href="@{'/product_list/edit/' + ${product.id}}">Edit</a>
 						&nbsp;&nbsp;&nbsp;
-						 <form method="get" action="@{product_list/delete/' + ${product.id}}"
+						 <form method="get" action="@{/product_list/delete/' + ${product.id}}"
        					  onclick="return confirm('Are you sure you want to delete this product?') ? true : false;">
-								<a class="btn btn-danger btn-sm" th:href="@{'product_list/delete/' + ${product.id}}">Delete</a>
+								<a class="btn btn-danger btn-sm" th:href="@{'/product_list/delete/' + ${product.id}}">Delete</a>
 						</form>
 					</td>
 					
@@ -94,10 +103,17 @@
 		<span th:unless="${currentPage < totalPages}">Next</span>
 		&nbsp;&nbsp;
 		
-		<a th:if="${currentPage < totalPages}" th:href="@{'/product_list/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+		<a th:if="${currentPage < totalPages}" th:href="@{'/product_list/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '?keyword=' + ${keyword}}">Last</a>
 		<span th:unless="${currentPage < totalPages}">Last</span>
 	</div>
 		</div>
 </section>
+
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/product_list}]]";
+    }
+</script>
+
 </body>
 </html>

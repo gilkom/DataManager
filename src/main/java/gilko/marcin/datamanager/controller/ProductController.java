@@ -43,7 +43,7 @@ public class ProductController {
 		
 		List<Product> listProducts = page.getContent();
 		
-		model.addAttribute("keyword", keyword);
+		
 		model.addAttribute("currentPage", pageNum);		
 		model.addAttribute("totalPages", page.getTotalPages());
 		model.addAttribute("totalItems", page.getTotalElements());
@@ -52,6 +52,7 @@ public class ProductController {
 		model.addAttribute("sortDir", sortDir);
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
 		
+		model.addAttribute("keyword", keyword);
 		model.addAttribute("listProducts", listProducts);
 		return "product_list";
 	}

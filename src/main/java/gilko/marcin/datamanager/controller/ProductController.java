@@ -57,14 +57,6 @@ public class ProductController {
 		return "product_list";
 	}
 	
-	@RequestMapping("/search")
-	public String viewHomePageSearch(Model model, @Param("keyword") String keyword) {
-		List<Product> listProducts = service.listAll(keyword);
-		model.addAttribute("listProducts", listProducts);
-		model.addAttribute("keyword", keyword);
-		return  "product_list";
-	}
-	
 	@RequestMapping("/new_product")
 	public String showNewProductPage(Model model) {
 		Product product = new Product();

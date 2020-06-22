@@ -30,12 +30,6 @@ public class ProductService {
 		return repo.search(keyword, pageable);
 	}
 	
-	public List<Product> listAll(String keyword){
-		if(keyword !=null) {
-			return repo.searching(keyword);
-		}
-		return repo.searching(keyword);
-	}
 	
 	public void save(Product product) {
 		repo.save(product);

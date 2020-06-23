@@ -9,6 +9,21 @@
 </head>
 <body>
 <section>
+<div sec:authorize="isAuthenticated()">
+<nav class="navbar navbar-dark bg-dark">
+	 <div class="container-fluid">
+	     <ul class="nav navbar-nav">
+  		  </ul>
+		 <ul class="nav navbar-nav navbar-right">
+		<li>
+			<span  class="navbar-text"  sec:authentication="name">Username</span>
+			<span  class="navbar-text" sec:authentication="principal.authorities">Roles</span>
+		</li>
+		</ul>
+	</div>
+</nav>
+</div>
+
 	<div class = "jumbotron">
 	<div class = "container">
 		<h1>Sale List</h1>
@@ -28,7 +43,7 @@
 </section>
 <section>
 	<div class ="container" align="center">
-			<a href="/sale_list/new_sale" sec:authorize="hasRole('ROLE_ADMIN')">Create New Sale</a>
+			<a class="btn btn-primary btn_lg" href="/sale_list/new_sale" sec:authorize="hasRole('ROLE_ADMIN')">Create New Sale</a>
 		<br/><br/>
 	<table class = "table">
 		<thead>
@@ -47,11 +62,11 @@
                 <td th:text="${sale.quantity}">Quantity</td>
                 <td th:text="${sale.amount}">Amount</td>
                 <td sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a th:href="@{'sale_list/edit_sale/' + ${sale.id}}">Edit</a>
+                    <a class="btn btn-warning btn-sm" th:href="@{'sale_list/edit_sale/' + ${sale.id}}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
                      <form method="get" action="@{'sale_list/delete_sale/' + ${sale.id}}"
        					  onclick="return confirm('Are you sure you want to delete this sale?') ? true : false;">
-                    <a th:href="@{'sale_list/delete_sale/' + ${sale.id}}">Delete</a>
+                    <a class="btn btn-danger btn-sm" th:href="@{'sale_list/delete_sale/' + ${sale.id}}">Delete</a>
                     </form>
                 </td>
             </tr>

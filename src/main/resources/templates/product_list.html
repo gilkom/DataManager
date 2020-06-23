@@ -9,6 +9,21 @@
 </head>
 <body>
 <section>
+<div sec:authorize="isAuthenticated()">
+<nav class="navbar navbar-dark bg-dark">
+	 <div class="container-fluid">
+	     <ul class="nav navbar-nav">
+  		  </ul>
+		 <ul class="nav navbar-nav navbar-right">
+		<li>
+			<span  class="navbar-text"  sec:authentication="name">Username</span>
+			<span  class="navbar-text" sec:authentication="principal.authorities">Roles</span>
+		</li>
+		</ul>
+	</div>
+</nav>
+</div>
+
 	<div class = "jumbotron">
 	<div class = "container">
 		<h1>Product List</h1>
@@ -114,6 +129,7 @@
 		
 		<a th:if="${currentPage < totalPages}" th:href="@{'/product_list/page/' + ${totalPages} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + '&keyword=' + ${keyword}}">Last</a>
 		<span th:unless="${currentPage < totalPages}">Last</span>
+		<br><br>
 	</div>
 		</div>
 </section>

@@ -2,10 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" />
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <head>
 <meta charset="utf-8"/>
 <title>Product Manager</title>
+
+
 </head>
 <body>
 <section>
@@ -18,6 +21,12 @@
 		<li>
 			<span  class="navbar-text"  sec:authentication="name">Username</span>
 			<span  class="navbar-text" sec:authentication="principal.authorities">Roles</span>
+			<span class="nav-item">
+				<a class="navbar-item" th:href="@{?lang=pl}"><img th:src="@{/images/pl_flag.png}"/></a>
+			</span>
+			<span class="nav-item">
+				<a class="navbar-item" th:href="@{?lang=eng}"><img th:src="@{/images/eng_flag.png}"/></a>
+			</span>
 		</li>
 		</ul>
 	</div>
@@ -25,8 +34,10 @@
 </div>
 	<div class = "jumbotron">
 	<div class = "container">
-		<h1>Simple Data Manager</h1>
+		<h1>[[#{app.title}]]</h1>
+			
 		<div align="right">
+		
 		<form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
 			<input type="submit" value="Logout" class="btn btn-info btn-lg"/>
 		</form>

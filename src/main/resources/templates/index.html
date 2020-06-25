@@ -12,6 +12,7 @@
 </head>
 <body>
 <section>
+
 <div sec:authorize="isAuthenticated()">
 <nav class="navbar navbar-dark bg-dark">
 	 <div class="container-fluid">
@@ -35,7 +36,8 @@
 	<div class = "jumbotron">
 	<div class = "container">
 		<h1>[[#{app.title}]]</h1>
-			
+		
+		
 		<div align="right">
 		
 		<form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">

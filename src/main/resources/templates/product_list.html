@@ -18,6 +18,12 @@
 		<li>
 			<span  class="navbar-text"  sec:authentication="name">Username</span>
 			<span  class="navbar-text" sec:authentication="principal.authorities">Roles</span>
+			<span class="nav-item">
+				<a class="navbar-item" th:href="@{?lang=pl}"><img th:src="@{/images/pl_flag.png}"/></a>
+			</span>
+			<span class="nav-item">
+				<a class="navbar-item" th:href="@{?lang=eng}"><img th:src="@{/images/eng_flag.png}"/></a>
+			</span>
 		</li>
 		</ul>
 	</div>

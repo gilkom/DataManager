@@ -41,7 +41,7 @@
 		<div align="right">
 		
 		<form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
-			<input type="submit" value="Logout" class="btn btn-info btn-lg"/>
+			<input type="submit" th:value="#{app.logout}" class="btn btn-info btn-lg"/>
 		</form>
 	
 		<a href="/login" type="button" class="btn btn-info btn-lg" sec:authorize="isAnonymous()">Login</a>
@@ -55,19 +55,19 @@
 	
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="/" role="tab" aria-controls="home" aria-selected="true">Home</a>
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="/" role="tab" aria-controls="home" aria-selected="true">[[#{menu.home}]]</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="/product_list" role="tab" aria-controls="product_list" aria-selected="false">Products</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="/product_list" role="tab" aria-controls="product_list" aria-selected="false">[[#{menu.products}]]</a>
   </li>
     <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="/sale_list" role="tab" aria-controls="sale_list" aria-selected="false">Sales</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="/sale_list" role="tab" aria-controls="sale_list" aria-selected="false">[[#{menu.sales}]]</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="/customer_list" role="tab" aria-controls="Customers" aria-selected="false">Customers</a>
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="/customer_list" role="tab" aria-controls="Customers" aria-selected="false">[[#{menu.customers}]]</a>
   </li>
 </ul>	
-	<br>Welcome to Simple Data Manager
+	<br>[[#{home.greeting}]]
 	</div>
 </section>
 </body>

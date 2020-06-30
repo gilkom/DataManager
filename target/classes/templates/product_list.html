@@ -71,21 +71,21 @@
 			<thead>
 				<tr>
 									<th>
-					<a th:href="@{'/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir} +'?keyword=' + ${keyword}}">Product ID</a>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir} +'?keyword=' + ${keyword}}">[[#{product.table.productId}]]</a>
 				</th>
 				<th>
-					<a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Name</a>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">[[#{product.table.name}]]</a>
 				</th>
 				<th>
-					<a th:href="@{'/page/' + ${currentPage} + '?sortField=brand&sortDir=' + ${reverseSortDir}}">Brand</a>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=brand&sortDir=' + ${reverseSortDir}}">[[#{product.table.brand}]]</a>
 				</th>
 				<th>
-					<a th:href="@{'/page/' + ${currentPage} + '?sortField=madein&sortDir=' + ${reverseSortDir}}">Made In</a>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=madein&sortDir=' + ${reverseSortDir}}">[[#{product.table.madein}]]</a>
 				</th>
 				<th>
-					<a th:href="@{'/page/' + ${currentPage} + '?sortField=price&sortDir=' + ${reverseSortDir}}">Price</a>
+					<a th:href="@{'/page/' + ${currentPage} + '?sortField=price&sortDir=' + ${reverseSortDir}}">[[#{product.table.price}]]</a>
 				</th>
-					<th sec:authorize="hasRole('ADMIN')">Actions</th>
+					<th sec:authorize="hasRole('ADMIN')">[[#{product.table.actions}]]</th>
 				</tr>
 			</thead>
 			<tbody>

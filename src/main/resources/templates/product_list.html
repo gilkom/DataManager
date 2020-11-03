@@ -29,7 +29,6 @@
 	</div>
 </nav>
 </div>
-
 	<div class = "jumbotron">
 	<div class = "container">
 		<h1>[[#{prod.title}]]</h1>
@@ -47,6 +46,8 @@
 	</div>
 	</div>
 </section>
+
+
 <section>
 	<div class ="container" align="center">
 			<a class="btn btn-primary btn_lg" href="/product_list/new_product" sec:authorize="hasRole('ADMIN')">[[#{prod.create}]]</a>
@@ -70,7 +71,7 @@
 		<table class = "table">
 			<thead>
 				<tr>
-									<th>
+				<th>
 					<a th:href="@{'/page/' + ${currentPage} + '?sortField=id&sortDir=' + ${reverseSortDir} +'?keyword=' + ${keyword}}">[[#{product.table.productId}]]</a>
 				</th>
 				<th>
@@ -85,7 +86,7 @@
 				<th>
 					<a th:href="@{'/page/' + ${currentPage} + '?sortField=price&sortDir=' + ${reverseSortDir}}">[[#{product.table.price}]]</a>
 				</th>
-					<th sec:authorize="hasRole('ADMIN')">[[#{product.table.actions}]]</th>
+				<th sec:authorize="hasRole('ADMIN')">[[#{product.table.actions}]]</th>
 				</tr>
 			</thead>
 			<tbody>

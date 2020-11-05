@@ -44,20 +44,34 @@ public String showNewCustomer(Model model) {
 	return "new_customer";
 }
 @RequestMapping(value= "/save_customer", method = RequestMethod.POST)
-public RedirectView saveCustomer(@Valid @ModelAttribute("customer") Customer customer,
-			@RequestParam("image") MultipartFile multipartFile,  BindingResult bindingResult) throws IOException{
+public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer,
+			BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile ) {
 	if(bindingResult.hasErrors()) {
-		return new RedirectView("new_customer", true);
+		return "new_customer";
 	}
 	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-	customer.setPhoto(fileName);
-	
+	if(!fileName.isEmpty()) {
+		System.out.println("customer.setPhoto(" + fileName + ")");
+		customer.setPhoto(fileName);
+	}
+	System.out.println("getId:" + customer.getId()+ ".");
+	System.out.println("getPhoto:" + customer.getPhoto()+ ".");
 	service.save(customer);
 	
 	String uploadDir = "user-photos/" + customer.getId();
-	FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+	if(fileName.isEmpty()) {
+		System.out.println("return 'redirect:/customer_list'");
+		return "redirect:/customer_list";
+	}
+	try {
+		System.out.println("save file");
+		FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
-	return  new RedirectView ("redirect:/customer_list", true);
+	return  "redirect:/customer_list";
 }
 @RequestMapping("/edit_customer/{id}")
 public ModelAndView showEditCustomerPage(@PathVariable(name="id") long id) {

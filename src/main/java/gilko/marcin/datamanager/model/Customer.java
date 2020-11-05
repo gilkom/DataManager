@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -32,6 +33,14 @@ public class Customer {
 		this.email = email;
 		this.address = address;
 		this.photo = photo;
+	}
+	
+	@Transient
+	public String getPhotosImagePath() {
+		if( photo == null || photo.isEmpty()) {
+			return "/user-photos/okladka.png";
+		}
+		return "/user-photos/" + id + "/" + photo;
 	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,5 +74,6 @@ public class Customer {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
+	
 	
 }

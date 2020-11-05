@@ -24,7 +24,7 @@
 <section>
 	<div class="container" align="center">
         <form action="#" th:action="@{/customer_list/save_customer}" th:object="${customer}"
-            method="post">
+            method="post" enctype="multipart/form-data">
  
             <table class="table">
                 <tr>             
@@ -46,7 +46,14 @@
                 <tr>
                     <td>Address:</td>
                     <td><input type="text" th:field="*{address}" /></td>
-                </tr>                           
+                </tr>  
+                <tr>
+					<td>Photo:</td>
+					<td>
+						<input type="hidden" th:field="*{photo}"/>
+						<input type="file" name="image" accept="image/png, image/jpeg" />
+					</td>
+				</tr>                         
                 <tr>
                     <td colspan="2"><button class = "btn btn-primary" type="submit">Save</button> </td>
                 </tr>

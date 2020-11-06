@@ -51,20 +51,15 @@ public String saveCustomer(@Valid @ModelAttribute("customer") Customer customer,
 	}
 	String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 	if(!fileName.isEmpty()) {
-		System.out.println("customer.setPhoto(" + fileName + ")");
 		customer.setPhoto(fileName);
 	}
-	System.out.println("getId:" + customer.getId()+ ".");
-	System.out.println("getPhoto:" + customer.getPhoto()+ ".");
 	service.save(customer);
 	
 	String uploadDir = "user-photos/" + customer.getId();
 	if(fileName.isEmpty()) {
-		System.out.println("return 'redirect:/customer_list'");
 		return "redirect:/customer_list";
 	}
 	try {
-		System.out.println("save file");
 		FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block

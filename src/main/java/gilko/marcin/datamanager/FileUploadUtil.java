@@ -1,5 +1,6 @@
 package gilko.marcin.datamanager;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -11,18 +12,24 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUploadUtil {
 	public static void saveFile(String uploadDir, String fileName, MultipartFile multipartFile) throws IOException{
 		Path uploadPath = Paths.get(uploadDir);
-		System.out.println("1");
+		
+		if(Files.exists(uploadPath)) {
+			
+			File file = new File(uploadPath.toString());
+			File[] files = file.listFiles();
+			for(File f:files)
+			{
+				Files.delete(Paths.get(f.getPath()));
+			}
+			Files.delete(uploadPath);			
+		}
+		
 		if(!Files.deleteIfExists(uploadPath)) {
-			System.out.println("2");
 			Files.createDirectories(uploadPath);
 		}
-		System.out.println("3");
 		try(InputStream inputStream = multipartFile.getInputStream()){
-			System.out.println("4");
 			Path filePath = uploadPath.resolve(fileName);
-			System.out.println("5");
 			Files.copy(inputStream,  filePath, StandardCopyOption.REPLACE_EXISTING);
-			System.out.println("6");
 		} catch(IOException ioe) {
 			throw new IOException("Could not save image file: " + fileName, ioe);
 		}
